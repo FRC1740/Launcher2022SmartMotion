@@ -70,6 +70,10 @@ class Robot : public frc::TimedRobot {
      * parameters will not persist between power cycles
      */
     m_motor.RestoreFactoryDefaults();
+    m_motor.EnableSoftLimit(rev::CANSparkMax::SoftLimitDirection::kForward, true);
+    m_motor.EnableSoftLimit(rev::CANSparkMax::SoftLimitDirection::kReverse, true);
+    m_motor.SetSoftLimit(rev::CANSparkMax::SoftLimitDirection::kForward, 300);
+    m_motor.SetSoftLimit(rev::CANSparkMax::SoftLimitDirection::kReverse, 0);
 
     // set PID coefficients
     m_pidController.SetP(kP);
